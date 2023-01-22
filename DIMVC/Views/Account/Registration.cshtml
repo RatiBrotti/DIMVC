@@ -1,0 +1,95 @@
+﻿@model DIMVC.Models.RegistrationForm
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Create an Account</h5>
+                    <form class="form-signin" asp-controller="Account" asp-action="Registration" method="post">
+                        <div class="form-label-group">
+                            <input asp-for=FirstName class="form-control" placeholder="First Name" required autofocus>
+                            <label asp-for="FirstName"></label>
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input asp-for="LastName" class="form-control" placeholder="Last Name" required>
+                            <label asp-for="LastName"></label>
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input asp-for="EmailAddress" class="form-control" placeholder="Email address" required>
+                            <label asp-for="EmailAddress"></label>
+                            <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input asp-for="Phone" class="form-control" placeholder="Phone Number" required>
+                            <label asp-for="Phone"></label>
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-label-group">
+                            <input type="password" asp-for="Password" class="form-control" placeholder="Password" required>
+                            <label asp-for="Password"></label>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showPassword" onclick="showPassword()">
+                                <label class="form-check-label" for="showPassword">Show Password</label>
+                            </div>
+                        </div>
+                        <div class="form-label-group">
+                            <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" required>
+                            <label asp-for="ConfirmPassword"></label>
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="showConfirmPassword" onclick="showConfirmPassword()">
+                                <label class="form-check-label" for="showConfirmPassword">Show Confirm Password</label>
+                            </div>
+                        </div>
+                        <script>
+                            function showPassword() {
+                                var x = document.getElementById("Password");
+                                if (x.type === "password") {
+                                    x.type = "text";
+                                } else {
+                                    x.type = "password";
+                                }
+                            }
+                            function showConfirmPassword() {
+                                var x = document.getElementById("ConfirmPassword");
+                                if (x.type === "password") {
+                                    x.type = "text";
+                                } else {
+                                    x.type = "password";
+                                }
+                            }
+                            $(document).ready(function () {
+                                $("form").submit(function (event) {
+                                    var password = $("#Password").val();
+                                    var confirmPassword = $("#ConfirmPassword").val();
+                                    if (password !== confirmPassword) {
+                                        alert("Passwords do not match");
+                                        event.preventDefault();
+                                    }
+                                });
+                            });
+
+
+                        </script>
+
+
+
+                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                        <hr class="my-4">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

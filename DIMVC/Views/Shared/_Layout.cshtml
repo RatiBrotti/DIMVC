@@ -24,10 +24,26 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li><li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Test" asp-action="Index">Test</a>
                         </li>
+                        <li class="nav-item">
+                        </li>
                     </ul>
+                    @{
+                        if (false)
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="UserPage">MyPage</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registration">Registration</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        }
+
+                    }
                 </div>
             </div>
         </nav>
