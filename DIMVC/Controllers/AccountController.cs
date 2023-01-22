@@ -1,16 +1,26 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using DIMVC.Models;
+using DIMVC.Context;
+using DIMVC.Repository;
+using DIMVC.DbClasses;
+using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DIMVC.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly IConfiguration _Conriguration;
-        public AccountController(IConfiguration configuration)
+        private readonly IMapper _mapper;
+        private readonly IGenericRepository<UnactivatedAccount> _unactivatedAccountRepository;
+
+        public AccountController(IMapper mapper, IGenericRepository<UnactivatedAccount> unactivatedAccountRepository)
         {
-            _Conriguration= configuration;
+            _mapper = mapper;
+            _unactivatedAccountRepository = unactivatedAccountRepository;
         }
+
+        
         public IActionResult Index()
         {
             return View();
@@ -31,9 +41,13 @@ namespace DIMVC.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Registration(RegistrationForm RegistrationForm)
+        public IActionResult Registration(RegistrationForm registrationForm)
         {
-
+            var u = _mapper.Map<UnactivatedAccount>(registrationForm);
+            u.ActivationToken = "asd";
+            _unactivatedAccountRepository.Add(u);
+            _unactivatedAccountRepository.SaveChanges();
+            
             return View();
         }
     }

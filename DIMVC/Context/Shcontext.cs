@@ -7,6 +7,10 @@ namespace DIMVC.Context
 {
     public partial class ShContext :DbContext
     {
+        public ShContext()
+        {
+
+        }
         public ShContext(DbContextOptions<ShContext> options) : base(options)
         {
 
@@ -22,14 +26,7 @@ namespace DIMVC.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new ActivatedAccountConfig().Configure(modelBuilder.Entity<ActivatedAccount>());
-            new AddressConfig().Configure(modelBuilder.Entity<Address>());
-            new CategoryConfig().Configure(modelBuilder.Entity<Category>());
-            new OrderConfig().Configure(modelBuilder.Entity<Order>());
-            new OrderItemConfig().Configure(modelBuilder.Entity<OrderItem>());
-            new ProductConfig().Configure(modelBuilder.Entity<Product>());
-            new ShoppingBagConfig().Configure(modelBuilder.Entity<ShoppingBag>());
-            new UnactivatedAccountsConfig().Configure(modelBuilder.Entity<UnactivatedAccount>());
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
             modelBuilder.HasSequence("ContactIDSequence")
                 .StartsAt(0)

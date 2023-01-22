@@ -270,7 +270,7 @@ namespace DIMVC.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("OrderItems", (string)null);
                 });
 
             modelBuilder.Entity("DIMVC.DbClasses.Product", b =>

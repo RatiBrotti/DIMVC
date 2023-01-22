@@ -8,7 +8,7 @@
         public string EmailAddress { get; set; }
         public string Phone { get; set; }
         public string PasswordHash { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public string? ActivationToken { get; set; }
+        public DateTime ModifiedDate { get; set; } = new DateTime();
+        public string ActivationToken { get; set; }
     }
 }
