@@ -15,6 +15,8 @@ namespace DIMVC.Mapper
 
             CreateMap<RegistrationForm, UnactivatedAccount>()
                 .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => src.ConfirmPassword));
+            CreateMap<UnactivatedAccount, ActivatedAccount>()
+                .ForMember(dest=>dest.PasswordHash)
         }
     }
 }

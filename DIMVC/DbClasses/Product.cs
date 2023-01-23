@@ -16,7 +16,7 @@ namespace DIMVC.DbClasses
         public decimal? ShippingWeight { get; set; }
         public int? CategoryId { get; set; }
         public string? Describtion { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; } = new DateTime();
         public string? PhotoFileName { get; set; }
         public int AccountId { get; set; }
 

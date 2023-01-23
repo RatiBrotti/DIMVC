@@ -10,10 +10,10 @@ namespace DIMVC.DbClasses
         public string EmailAddress { get; set; }
         public string Phone { get; set; }
         public string PasswordHash { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; } = new DateTime();
         public int UserLevel { get; set; }
         public bool? AcaountStatus { get; set; }
-        public string DeactivationComment { get; set; }
+        public string? DeactivationComment { get; set; }
 
 
         public List<Address> Addresses { get; set; }

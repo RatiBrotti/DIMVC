@@ -13,7 +13,7 @@
         public string ShipMethod { get; set; }
         public decimal Total { get; set; }
         public string? Comment { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; } = new DateTime();
 
         public ActivatedAccount ActivatedAccount { get; set; }
         public Address Address { get; set; }

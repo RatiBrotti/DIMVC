@@ -6,7 +6,7 @@ namespace DIMVC.DbClasses
         public int Id { get; set; }
         public int? ParentCategoryId { get; set; }
         public string CategoryName { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public DateTime ModifiedDate { get; set; } = new DateTime();
 
         public Category ParentCategory { get; set; }
         public List<Product> Products { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace DIMVC.Tools
 {
-    public class Tools
+    public static class Mail
     {
         public static bool SendMail(string userMail, string subject, string body, bool isHTML = false)
         {
